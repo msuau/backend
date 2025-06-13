@@ -21,8 +21,28 @@ exports.getJokeById = async (req, res) => {
 
 // Voir une blague aléatoire
 exports.getRandomJoke = async (req, res) => {
-  const count = await Joke.count();
-  const randomIndex = Math.floor(Math.random() * count);
-  const joke = await Joke.findOne({ offset: randomIndex });
-  res.json(joke);
+try {
+const count = await Joke.count();
+if (count === 0) {
+return res.status(404).json({ message: 'Aucune blague disponible' });
+}
+
+const randomIndex = Math.floor(Math.random() * count);
+
+const jokes = await Joke.findAll({
+  limit: 1,
+  offset: randomIndex
+});
+
+const joke = jokes[0];
+
+if (!joke) {
+  return res.status(404).json({ message: 'Blague introuvable' });
+}
+
+res.json(joke);
+} catch (err) {
+console.error(err);
+res.status(500).json({ message: 'Erreur serveur' });
+}
 };
