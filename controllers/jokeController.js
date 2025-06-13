@@ -21,7 +21,8 @@ exports.getJokeById = async (req, res) => {
 
 // Voir une blague aléatoire
 exports.getRandomJoke = async (req, res) => {
-  const jokes = await Joke.findAll();
-  const random = jokes[Math.floor(Math.random() * jokes.length)];
-  res.json(random);
+  const count = await Joke.count();
+  const randomIndex = count[Math.floor(Math.random() * count)];
+  const joke = await Joke.findOne({ offset: randomIndex });
+  res.json(joke);
 };
