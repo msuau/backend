@@ -22,7 +22,7 @@ exports.getJokeById = async (req, res) => {
 // Voir une blague aléatoire
 exports.getRandomJoke = async (req, res) => {
   const count = await Joke.count();
-  const randomIndex = count[Math.floor(Math.random() * count)];
+  const randomIndex = Math.floor(Math.random() * count);
   const joke = await Joke.findOne({ offset: randomIndex });
   res.json(joke);
 };
