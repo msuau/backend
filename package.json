@@ -4,18 +4,19 @@
   "description": "api pour envoyer et recevoir des blagues",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msuau/backend-blagues.git"
+    "url": "https://github.com/msuau/backend.git"
   },
   "author": "Mathias SUAU",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/msuau/backend-blagues/issues"
+    "url": "https://github.com/msuau/backend/issues"
   },
-  "homepage": "https://github.com/msuau/backend-blagues#readme",
+  "homepage": "https://github.com/msuau/backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
