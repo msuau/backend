@@ -4,6 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const db = require('./config/database');
 const Joke = require('./models/joke');
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
@@ -14,4 +15,4 @@ db.sync()
 .then(() => console.log('Base de données prête !'))
 .catch(err => console.error('Erreur de BDD :', err));
 
-app.listen(3000, () => console.log('Serveur démarré sur le port 3000'));
+app.listen(PORT, () => console.log('Serveur démarré sur le port', PORT));
