@@ -11,6 +11,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
+  servers: {url: 'https://api-blagues-carambar.onrender.com',},
   apis: ['./routes/*.js'], // Auto-doc des routes
 };
 
